@@ -12,7 +12,7 @@ function encode(file) {
 
 (async function chromeExample() {
   const options = new chrome.Options()
-      .addExtensions(encode('extension.crx'));
+      .addExtensions(encode('modheader.crx'));
   let driver = await new Builder()
       .forBrowser('chrome')
       .setChromeOptions(options)
@@ -32,7 +32,7 @@ function encode(file) {
 (async function firefoxExample() {
   const options = new firefox.Options();
   options.setPreference('xpinstall.signatures.required', false);
-  options.addExtensions('extension.xpi');
+  options.addExtensions('modheader.xpi');
   let driver = await new Builder()
       .forBrowser('firefox')
       .setFirefoxOptions(options)
