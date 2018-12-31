@@ -42,7 +42,7 @@ All APIs are URL-based. Please make sure to URL encode your name and value
 properly.
 
 ### Add request header:
-http://mod-header.appspot.com/add?<name1>=<value1>&<name2>=<value2>&...
+http://mod-header.appspot.com/add?{name1}={value1}&{name2}={value2}&...
 
 e.g., http://mod-header.appspot.com/add?Test=1
 
@@ -50,7 +50,7 @@ e.g., http://mod-header.appspot.com/add?Test=1
 http://mod-header.appspot.com/clear
 
 ### Load custom profile:
-http://mod-header.appspot.com/load?profile=<exported_profile_in_json>
+http://mod-header.appspot.com/load?profile={exported_profile_in_json}
 
 exported_profile_in_json can be obtained from the regular ModHeader
 extension using ... -> Export Profile.
