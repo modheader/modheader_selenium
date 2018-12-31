@@ -1,0 +1,27 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8" />
+  <title>Loading</title>
+  <script src="add.js"></script>
+</head>
+<body>
+  <p>
+    Specify the desired request header to be added in the URL parameter to this page.
+    e.g., to add the request header <code>Test=1</code> and <code>User-Agent=Test</code>,
+    use the following:
+    <a href="/add.html?Test=1&User-Agent=Test%20extension">
+      /add.html?Test=1&User-Agent=Test%20extension
+    </a>
+  </p>
+
+  <p>
+    Please be sure to URL encoded the parameters so they can be correctly parsed.
+  </p>
+
+  <p>
+    To clear the modifications, go to:
+    <a href="/clear.html">
+      /clear.html
+    </a>
+  </p>
+</body>

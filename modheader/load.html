@@ -1,0 +1,29 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8" />
+  <title>Loading</title>
+  <script src="load.js"></script>
+</head>
+<body>
+  <p>
+    Load the exported profile from ModHeader. e.g., to load the following exported profile:
+    <code>
+        {"title":"Test profile","hideComment":true,"headers":[{"enabled":true,"name":"Test","value":"1","comment":""}],"respHeaders":[],"filters":[],"appendMode":""}
+    </code>,
+    go to:
+    <a href="/load.html?profile=%7B%22title%22%3A%22Test%20profile%22%2C%22hideComment%22%3Atrue%2C%22headers%22%3A%5B%7B%22enabled%22%3Atrue%2C%22name%22%3A%22Test%22%2C%22value%22%3A%221%22%2C%22comment%22%3A%22%22%7D%5D%2C%22respHeaders%22%3A%5B%5D%2C%22filters%22%3A%5B%5D%2C%22appendMode%22%3A%22%22%7D">
+      /load.html?profile=%7B%22title%22%3A%22Test%20profile%22%2C%22hideComment%22%3Atrue%2C%22headers%22%3A%5B%7B%22enabled%22%3Atrue%2C%22name%22%3A%22Test%22%2C%22value%22%3A%221%22%2C%22comment%22%3A%22%22%7D%5D%2C%22respHeaders%22%3A%5B%5D%2C%22filters%22%3A%5B%5D%2C%22appendMode%22%3A%22%22%7D
+    </a>
+  </p>
+
+  <p>
+    Please be sure to URL encoded the parameters so they can be correctly parsed.
+  </p>
+  
+  <p>
+    To clear the modifications, go to:
+    <a href="/clear.html">
+      /clear.html
+    </a>
+  </p>
+</body>

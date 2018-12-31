@@ -1,0 +1,17 @@
+{
+  "name": "modheader_selenium_example",
+  "version": "1.0.0",
+  "description": "Example for running ModHeader with selenium.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chromedriver": "^2.45.0",
+    "geckodriver": "^1.14.1",
+    "selenium-webdriver": "^4.0.0-alpha.1",
+    "sleep": "^5.2.3"
+  }
+}
