@@ -1,6 +1,6 @@
 {
   "name": "ModHeader for Selenium",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "manifest_version": 2,
   "description": "Modify request and response headers in Selenium",
   "background":  {
@@ -11,7 +11,7 @@
   },
   "applications": {
     "gecko": {
-      "id": "{75145e4e-c014-4625-94db-6dbf92f2f6bb}",
+      "id": "{a0690929-84ee-447c-b22d-8d7a4451ce5d}",
       "strict_min_version": "50.0"
     }
   },

@@ -19,7 +19,7 @@ function encode(file) {
       .build();
   try {
     // Modify the header and make sure it is done before proceeding.
-    await driver.get("http://mod-header.appspot.com/add?Test=1");
+    await driver.get("http://mod-header.appspot.com/add?Referer=Test");
     await driver.wait(until.titleIs('Done'), 1000);
 
     await driver.get('http://www.xhaus.com/headers');
@@ -39,7 +39,7 @@ function encode(file) {
       .build();
   try {
     // Modify the header and make sure it is done before proceeding.
-    await driver.get("http://mod-header.appspot.com/add?Test=1");
+    await driver.get("http://mod-header.appspot.com/add?Referer=Test");
     await driver.wait(until.titleIs('Done'), 1000);
 
     await driver.get('http://www.xhaus.com/headers');

@@ -63,3 +63,15 @@ http://mod-header.appspot.com/load?profile={exported_profile_in_json}
 
 exported_profile_in_json can be obtained from the regular ModHeader
 extension using ... -> Export Profile.
+
+## Updating codes
+
+For Chrome (update the modheader.crx file):
+Go to chrome://extensions, and click on "Pack extension".
+
+For Firefox (update the modheader.xpi file):
+
+```
+npm install --global web-ext
+web-ext sign --api-key=$AMO_JWT_ISSUER --api-secret=$AMO_JWT_SECRET 
+```

@@ -153,14 +153,31 @@ chrome.webRequest.onBeforeRequest.addListener(
   ['blocking']
 );
 
+function getChromeVersion() {
+  let pieces = navigator.userAgent.match(/Chrom(?:e|ium)\/([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)/);
+  if (pieces == null || pieces.length != 5) {
+    return undefined;
+  }
+  pieces = pieces.map(piece => parseInt(piece, 10));
+  return {
+    major: pieces[1],
+    minor: pieces[2],
+    build: pieces[3],
+    patch: pieces[4]
+  };
+}
+
+const CHROME_VERSION = getChromeVersion();
+const requiresExtraHeaders = (CHROME_VERSION && CHROME_VERSION.major >= 72);
+
 chrome.webRequest.onBeforeSendHeaders.addListener(
   modifyRequestHeaderHandler_,
   {urls: ["<all_urls>"]},
-  ['requestHeaders', 'blocking']
+  requiresExtraHeaders ? ['requestHeaders', 'blocking', 'extraHeaders'] : ['requestHeaders', 'blocking']
 );
 
 chrome.webRequest.onHeadersReceived.addListener(
   modifyResponseHeaderHandler_,
   {urls: ["<all_urls>"]},
-  ['responseHeaders', 'blocking']
+  requiresExtraHeaders ? ['responseHeaders', 'blocking', 'extraHeaders'] : ['responseHeaders', 'blocking']
 );
