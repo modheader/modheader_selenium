@@ -17,7 +17,7 @@ function passFilters_(url, type, filters) {
       switch (filter.type) {
         case 'urls':
           hasUrlFilters = true;
-          if (url.search(filter.urlPattern) == 0) {
+          if (url.search(filter.urlRegex) == 0) {
             allowUrls = true;
           }
           break;
@@ -67,7 +67,7 @@ function loadSelectedProfile_() {
           }
           joiner.push(c);
         }
-        filter.urlPattern = joiner.join('');
+        filter.urlRegex = joiner.join('');
       }
       filters.push(filter);
     }
