@@ -6,10 +6,7 @@ This is the repo for using [ModHeader](https://chrome.google.com/webstore/detail
 
 If you find ModHeader useful, please consider making a donation. If you use it for your company project, please ask your company to make a monthly donation!
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=3XFKZ8PCRB8P6&currency_code=USD&amount=5&source=url)
-<a href="https://www.buymeacoffee.com/scCieVdfj">
-  <img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee">
-</a>
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/pools/c/84aPpFIA0Z)
 
 ## Usage:
 
