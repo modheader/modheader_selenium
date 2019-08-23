@@ -1,6 +1,6 @@
 # ModHeader for Selenium (WebDriver)
 
-This is the repo for using [ModHeader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj) in [Selenium](https://www.seleniumhq.org/). For ModHeader's browser extension source code, please visit https://github.com/hao1300/modheader
+This is the repo for using [ModHeader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj) in [Selenium](https://www.seleniumhq.org/). For ModHeader's browser extension source code, please visit https://github.com/bewisse/modheader
 
 ## Donation
 
