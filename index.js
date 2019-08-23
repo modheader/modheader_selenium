@@ -19,7 +19,7 @@ function encode(file) {
       .build();
   try {
     // Modify the header and make sure it is done before proceeding.
-    await driver.get("http://mod-header.appspot.com/add?Referer=Test");
+    await driver.get("https://bewisse.com/add?Referer=Test");
     await driver.wait(until.titleIs('Done'), 1000);
 
     await driver.get('http://www.xhaus.com/headers');
@@ -31,7 +31,6 @@ function encode(file) {
 
 (async function firefoxExample() {
   const options = new firefox.Options();
-  options.setPreference('xpinstall.signatures.required', false);
   options.addExtensions('modheader.xpi');
   let driver = await new Builder()
       .forBrowser('firefox')
@@ -39,7 +38,7 @@ function encode(file) {
       .build();
   try {
     // Modify the header and make sure it is done before proceeding.
-    await driver.get("http://mod-header.appspot.com/add?Referer=Test");
+    await driver.get("https://bewisse.com/add?Referer=Test");
     await driver.wait(until.titleIs('Done'), 1000);
 
     await driver.get('http://www.xhaus.com/headers');

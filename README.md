@@ -24,7 +24,7 @@ let driver = await new Builder()
     .setChromeOptions(options)
     .build();
 // Modify the header and make sure it is done before proceeding.
-await driver.get("http://mod-header.appspot.com/add?Test=1");
+await driver.get("https://bewisse.com/add?Test=1");
 await driver.wait(until.titleIs('Done'), 1000);
 ```
 
@@ -38,7 +38,7 @@ let driver = await new Builder()
     .setFirefoxOptions(options)
     .build();
 // Modify the header and make sure it is done before proceeding.
-await driver.get("http://mod-header.appspot.com/add?Test=1");
+await driver.get("https://bewisse.com/add?Test=1");
 await driver.wait(until.titleIs('Done'), 1000);
 ```
 
@@ -48,15 +48,15 @@ All APIs are URL-based. Please make sure to URL encode your name and value
 properly.
 
 ### Add request header:
-http://mod-header.appspot.com/add?{name1}={value1}&{name2}={value2}&...
+https://bewisse.com/add?{name1}={value1}&{name2}={value2}&...
 
-e.g., http://mod-header.appspot.com/add?Test=1
+e.g., https://bewisse.com/add?Test=1
 
 ### Clear all modified request headers:
-http://mod-header.appspot.com/clear
+https://bewisse.com/clear
 
 ### Load custom profile:
-http://mod-header.appspot.com/load?profile={exported_profile_in_json}
+https://bewisse.com/load?profile={exported_profile_in_json}
 
 exported_profile_in_json can be obtained from the regular ModHeader
 extension using ... -> Export Profile.

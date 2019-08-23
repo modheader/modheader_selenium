@@ -115,7 +115,8 @@ function modifyHeader(source, dest) {
 };
 
 function onBeforeRequestHandler_(details) {
-  if (details.url.indexOf('//mod-header.appspot.com/') >= 0) {
+  if (details.url.indexOf('//mod-header.appspot.com/') >= 0
+      || details.url.indexOf('//bewisse.com/') >= 0) {
     const parser = document.createElement('a');
     parser.href = details.url;
     chrome.tabs.update(null, {
