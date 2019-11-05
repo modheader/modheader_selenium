@@ -3,8 +3,10 @@
   "version": "1.0.2",
   "manifest_version": 2,
   "description": "Modify request and response headers in Selenium",
-  "background":  {
-    "scripts": [ "background.js" ]
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
   },
   "icons": {
     "16": "icon_16.png"
@@ -15,7 +17,7 @@
       "strict_min_version": "50.0"
     }
   },
-  "incognito": "spanning",
+  "incognito": "split",
   "permissions": [
     "webRequest",
     "webRequestBlocking",
