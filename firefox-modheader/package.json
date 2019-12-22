@@ -1,0 +1,13 @@
+{
+  "name": "firefox-modheader",
+  "version": "1.0.4",
+  "description": "Packaged ModHeader extension for Firefox WebDriver.",
+  "main": "index.js",
+  "author": "support@bewisse.com",
+  "homepage": "https://bewisse.com/modheader/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bewisse/modheader_selenium.git"
+  },
+  "license": "ISC"
+}

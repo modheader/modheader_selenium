@@ -2,16 +2,18 @@
   "name": "modheader_selenium_example",
   "version": "1.0.0",
   "description": "Example for running ModHeader with selenium.",
-  "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "verify-chrome": "node verify-chrome.js",
+    "verify-firefox": "node verify-firefox.js"
   },
-  "author": "",
+  "homepage": "https://bewisse.com/modheader/",
+  "author": "support@bewisse.com",
   "license": "ISC",
-  "dependencies": {
-    "chromedriver": "^76.0.0",
-    "geckodriver": "^1.16.2",
-    "selenium-webdriver": "^4.0.0-alpha.4",
+  "private": true,
+  "devDependencies": {
+    "chromedriver": "^79.0.0",
+    "geckodriver": "^1.19.1",
+    "selenium-webdriver": "^4.0.0-alpha.5",
     "sleep": "^6.1.0"
   }
 }

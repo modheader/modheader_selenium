@@ -62,3 +62,5 @@ typings/
 
 # Private keys
 *.pem
+
+package-lock.json

@@ -8,38 +8,32 @@ If you find ModHeader useful, please consider making a donation. If you use it f
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/pools/c/84aPpFIA0Z)
 
+## Installation:
+
+To use this in NodeJS for Chrome, install the [chrome-modheader](https://www.npmjs.com/package/chrome-modheader) package:
+
+```
+npm install chrome-modheader
+```
+
+To use this in NodeJS for Firefox, install the [firefox-modheader](https://www.npmjs.com/package/firefox-modheader) package:
+
+```
+npm install firefox-modheader
+```
+
+For other programming languages, you can find the prepackaged extensions in the `chrome-modheader` and `firefox-modheader`
+subdirectories. Load them into WebDriver as needed.
+
 ## Usage:
 
-To use ModHeader in Chrome, do the following:
 ```
-function encode(file) {
-  var stream = fs.readFileSync(file);
-  return new Buffer(stream).toString('base64');
-}
-
-const options = new chrome.Options()
-    .addExtensions(encode('extension.crx'));
-let driver = await new Builder()
-    .forBrowser('chrome')
-    .setChromeOptions(options)
-    .build();
-// Modify the header and make sure it is done before proceeding.
-await driver.get("https://bewisse.com/add?Test=1");
-await driver.wait(until.titleIs('Done'), 1000);
-```
-
-For Firefox, do the following:
-```
-const options = new firefox.Options();
-options.setPreference('xpinstall.signatures.required', false);
-options.addExtensions('extension.xpi');
-let driver = await new Builder()
-    .forBrowser('firefox')
-    .setFirefoxOptions(options)
-    .build();
-// Modify the header and make sure it is done before proceeding.
-await driver.get("https://bewisse.com/add?Test=1");
-await driver.wait(until.titleIs('Done'), 1000);
+const { getExtension: getChromeExtension } = require('chrome-modheader');
+const options = new chrome.Options().addExtensions(getExtension());
+const driver = await new Builder()
+  .forBrowser('chrome')
+  .setChromeOptions(options)
+  .build();
 ```
 
 ## API:
@@ -48,20 +42,31 @@ All APIs are URL-based. Please make sure to URL encode your name and value
 properly.
 
 ### Add request header:
-https://bewisse.com/add?{name1}={value1}&{name2}={value2}&...
 
-e.g., https://bewisse.com/add?Test=1
+```
+https://bewisse.com/add?{name1}={value1}&{name2}={value2}&...
+```
+
+e.g., `https://bewisse.com/add?Test=1`
 
 ### Clear all modified request headers:
+
+```
 https://bewisse.com/clear
+```
 
 ### Load custom profile:
+
+```
 https://bewisse.com/load?profile={exported_profile_in_json}
+```
 
 exported_profile_in_json can be obtained from the regular ModHeader
 extension using ... -> Export Profile.
 
 ## Updating codes
+
+### Packaging the extensions
 
 For Chrome (update the modheader.crx file):
 Go to chrome://extensions, and click on "Pack extension".
@@ -70,5 +75,15 @@ For Firefox (update the modheader.xpi file):
 
 ```
 npm install --global web-ext
-web-ext sign --api-key=$AMO_JWT_ISSUER --api-secret=$AMO_JWT_SECRET 
+web-ext sign --api-key=$AMO_JWT_ISSUER --api-secret=$AMO_JWT_SECRET
 ```
+
+### Verification
+
+Copy `modheader.crx` into chrome-modheader, and copy `modheader.xpi` into firefox-modheader.
+Run `npm run verify-chrome` and `npm run verify-firefox` to verify that the packaged extensions are working fine.
+
+### Publishing
+
+`cd chrome-modheader`, update the version in `package.json`, then `npm publish`
+`cd firefox-modheader`, update the version in `package.json`, then `npm publish`

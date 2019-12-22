@@ -1,12 +1,10 @@
 {
   "name": "ModHeader for Selenium",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "manifest_version": 2,
   "description": "Modify request and response headers in Selenium",
   "background": {
-    "scripts": [
-      "background.js"
-    ]
+    "scripts": ["background.js"]
   },
   "icons": {
     "16": "icon_16.png"
@@ -18,9 +16,5 @@
     }
   },
   "incognito": "split",
-  "permissions": [
-    "webRequest",
-    "webRequestBlocking",
-    "<all_urls>"
-  ]
+  "permissions": ["webRequest", "webRequestBlocking", "<all_urls>"]
 }

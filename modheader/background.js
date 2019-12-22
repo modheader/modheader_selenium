@@ -30,9 +30,10 @@ function passFilters_(url, type, filters) {
       }
     }
   }
-  return (!hasUrlFilters || allowUrls)
-      && (!hasResourceTypeFilters || allowTypes);
-};
+  return (
+    (!hasUrlFilters || allowUrls) && (!hasResourceTypeFilters || allowTypes)
+  );
+}
 
 function loadSelectedProfile_() {
   let appendMode = false;
@@ -47,11 +48,11 @@ function loadSelectedProfile_() {
       for (const header of headers) {
         // Overrides the header if it is enabled and its name is not empty.
         if (header.enabled && header.name) {
-          output.push({name: header.name, value: header.value});
+          output.push({ name: header.name, value: header.value });
         }
       }
       return output;
-    };
+    }
     for (const filter of selectedProfile.filters) {
       if (filter.urlPattern) {
         const urlPattern = filter.urlPattern;
@@ -76,12 +77,12 @@ function loadSelectedProfile_() {
     respHeaders = filterEnabledHeaders_(selectedProfile.respHeaders);
   }
   return {
-      appendMode: appendMode,
-      headers: headers,
-      respHeaders: respHeaders,
-      filters: filters
+    appendMode: appendMode,
+    headers: headers,
+    respHeaders: respHeaders,
+    filters: filters
   };
-};
+}
 
 function modifyHeader(source, dest) {
   if (!source.length) {
@@ -108,15 +109,18 @@ function modifyHeader(source, dest) {
         dest[index].value += header.value;
       }
     } else {
-      dest.push({name: header.name, value: header.value});
+      dest.push({ name: header.name, value: header.value });
       indexMap[header.name.toLowerCase()] = dest.length - 1;
     }
   }
-};
+}
 
 function onBeforeRequestHandler_(details) {
-  if (details.url.indexOf('//mod-header.appspot.com/') >= 0
-      || details.url.indexOf('//bewisse.com/') >= 0) {
+  if (
+    details.url.indexOf('//bewisse.com/add') >= 0 ||
+    details.url.indexOf('//bewisse.com/clear') >= 0 ||
+    details.url.indexOf('//bewisse.com/load') >= 0
+  ) {
     const parser = document.createElement('a');
     parser.href = details.url;
     chrome.tabs.update(null, {
@@ -126,36 +130,44 @@ function onBeforeRequestHandler_(details) {
       cancel: true
     };
   }
-};
+}
 
 function modifyRequestHeaderHandler_(details) {
   currentProfile = loadSelectedProfile_();
-  if (currentProfile
-      && passFilters_(details.url, details.type, currentProfile.filters)) {
+  if (
+    currentProfile &&
+    passFilters_(details.url, details.type, currentProfile.filters)
+  ) {
     modifyHeader(currentProfile.headers, details.requestHeaders);
   }
-  return {requestHeaders: details.requestHeaders};
-};
+  return { requestHeaders: details.requestHeaders };
+}
 
 function modifyResponseHeaderHandler_(details) {
-  if (currentProfile
-      && passFilters_(details.url, details.type, currentProfile.filters)) {
+  if (
+    currentProfile &&
+    passFilters_(details.url, details.type, currentProfile.filters)
+  ) {
     const responseHeaders = JSON.parse(JSON.stringify(details.responseHeaders));
     modifyHeader(currentProfile.respHeaders, responseHeaders);
-    if (JSON.stringify(responseHeaders) != JSON.stringify(details.responseHeaders)) {
-      return {responseHeaders: responseHeaders};
+    if (
+      JSON.stringify(responseHeaders) != JSON.stringify(details.responseHeaders)
+    ) {
+      return { responseHeaders: responseHeaders };
     }
   }
-};
- 
+}
+
 chrome.webRequest.onBeforeRequest.addListener(
   onBeforeRequestHandler_,
-  {urls: ["<all_urls>"]},
+  { urls: ['<all_urls>'] },
   ['blocking']
 );
 
 function getChromeVersion() {
-  let pieces = navigator.userAgent.match(/Chrom(?:e|ium)\/([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)/);
+  let pieces = navigator.userAgent.match(
+    /Chrom(?:e|ium)\/([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)/
+  );
   if (pieces == null || pieces.length != 5) {
     return undefined;
   }
@@ -169,16 +181,20 @@ function getChromeVersion() {
 }
 
 const CHROME_VERSION = getChromeVersion();
-const requiresExtraHeaders = (CHROME_VERSION && CHROME_VERSION.major >= 72);
+const requiresExtraHeaders = CHROME_VERSION && CHROME_VERSION.major >= 72;
 
 chrome.webRequest.onBeforeSendHeaders.addListener(
   modifyRequestHeaderHandler_,
-  {urls: ["<all_urls>"]},
-  requiresExtraHeaders ? ['requestHeaders', 'blocking', 'extraHeaders'] : ['requestHeaders', 'blocking']
+  { urls: ['<all_urls>'] },
+  requiresExtraHeaders
+    ? ['requestHeaders', 'blocking', 'extraHeaders']
+    : ['requestHeaders', 'blocking']
 );
 
 chrome.webRequest.onHeadersReceived.addListener(
   modifyResponseHeaderHandler_,
-  {urls: ["<all_urls>"]},
-  requiresExtraHeaders ? ['responseHeaders', 'blocking', 'extraHeaders'] : ['responseHeaders', 'blocking']
+  { urls: ['<all_urls>'] },
+  requiresExtraHeaders
+    ? ['responseHeaders', 'blocking', 'extraHeaders']
+    : ['responseHeaders', 'blocking']
 );
