@@ -1,10 +1,19 @@
 {
   "name": "chrome-modheader",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Packaged ModHeader extension for Chrome WebDriver.",
   "main": "index.js",
   "author": "support@bewisse.com",
   "homepage": "https://bewisse.com/modheader/",
+  "keywords": [
+    "modheader",
+    "chrome",
+    "webdriver",
+    "modify",
+    "http headers",
+    "request headers",
+    "response headers"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/bewisse/modheader_selenium.git"

@@ -11,7 +11,7 @@ npm install firefox-modheader
 ## Usage
 
 ```
-const { getExtension } = require('firefox-modheader');
+const { getExtension, getAddHeaderUrl } = require('firefox-modheader');
 
 const options = new firefox.Options();
 options.addExtensions(getExtension());
@@ -19,13 +19,17 @@ const driver = await new Builder()
   .forBrowser('firefox')
   .setFirefoxOptions(options)
   .build();
-
+await driver.get(getAddHeaderUrl('HeaderName', 'HeaderValue'));
 ```
 
 ## API:
 
 All APIs are URL-based. Please make sure to URL encode your name and value
 properly.
+
+You can use the `getAddHeaderUrl()` and `getClearHeadersUrl()` functions to
+craft these URLs. Be sure to do `driver.get()`, and be mindful that these
+will change the URL of the WebDriver.
 
 ### Add request header:
 

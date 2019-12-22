@@ -11,7 +11,7 @@ npm install chrome-modheader
 ## Usage
 
 ```
-const { getExtension } = require('chrome-modheader');
+const { getExtension, getAddHeaderUrl } = require('chrome-modheader');
 
 
 const options = new chrome.Options().addExtensions(getExtension());
@@ -19,12 +19,17 @@ const driver = await new Builder()
   .forBrowser('chrome')
   .setChromeOptions(options)
   .build();
+await driver.get(getAddHeaderUrl('HeaderName', 'HeaderValue'));
 ```
 
 ## API:
 
 All APIs are URL-based. Please make sure to URL encode your name and value
 properly.
+
+You can use the `getAddHeaderUrl()` and `getClearHeadersUrl()` functions to
+craft these URLs. Be sure to do `driver.get()`, and be mindful that these
+will change the URL of the WebDriver.
 
 ### Add request header:
 
