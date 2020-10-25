@@ -34,15 +34,15 @@ will change the URL of the WebDriver.
 ### Add request header:
 
 ```
-https://bewisse.com/add?{name1}={value1}&{name2}={value2}&...
+https://webdriver.bewisse.com/add?{name1}={value1}&{name2}={value2}&...
 ```
 
-e.g., `https://bewisse.com/add?Test=1`
+e.g., `https://webdriver.bewisse.com/add?Test=1`
 
 ### Clear all modified request headers:
 
 ```
-https://bewisse.com/clear
+https://webdriver.bewisse.com/clear
 ```
 
 ### Load custom profile:

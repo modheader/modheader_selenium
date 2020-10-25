@@ -63,4 +63,5 @@ typings/
 # Private keys
 *.pem
 
+.idea
 package-lock.json

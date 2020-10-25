@@ -117,9 +117,12 @@ function modifyHeader(source, dest) {
 
 function onBeforeRequestHandler_(details) {
   if (
-    details.url.indexOf('//bewisse.com/add') >= 0 ||
-    details.url.indexOf('//bewisse.com/clear') >= 0 ||
-    details.url.indexOf('//bewisse.com/load') >= 0
+    details.url.includes('//webdriver.bewisse.com/add') ||
+    details.url.includes('//webdriver.bewisse.com/clear') ||
+    details.url.includes('//webdriver.bewisse.com/load') ||
+    details.url.includes('//bewisse.com/add') ||
+    details.url.includes('//bewisse.com/clear') ||
+    details.url.includes('//bewisse.com/load')
   ) {
     const parser = document.createElement('a');
     parser.href = details.url;
