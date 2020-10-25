@@ -53,6 +53,30 @@ const driver = await new Builder()
 await driver.get(getAddHeaderUrl('HeaderName', 'HeaderValue'));
 ```
 
+For Webdriver.io:
+
+Modify wdio.conf.js file
+
+```
+const chromeModheader = require('chrome-modheader');
+
+exports.config = {
+...
+    capabilities: [{
+        browserName: 'chrome',
+        chromeOptions: {
+            extensions: [chromeModheader.getExtension()],
+        }
+    }],
+...
+    before: function (capabilities, specs) {
+        browser.url(chromeModheader.getAddHeaderUrl('accept-encoding', ''));
+    },
+...
+}
+
+```
+
 ## API:
 
 All APIs are URL-based. Please make sure to URL encode your name and value
