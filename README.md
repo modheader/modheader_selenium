@@ -64,7 +64,7 @@ exports.config = {
 ...
     capabilities: [{
         browserName: 'chrome',
-        chromeOptions: {
+        'goog:chromeOptions': {
             extensions: [chromeModheader.getExtension()],
         }
     }],
