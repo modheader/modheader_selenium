@@ -17,7 +17,7 @@ function passFilters_(url, type, filters) {
       switch (filter.type) {
         case 'urls':
           hasUrlFilters = true;
-          if (url.search(filter.urlRegex) == 0) {
+          if (url.search(filter.urlRegex) === 0) {
             allowUrls = true;
           }
           break;
@@ -30,9 +30,7 @@ function passFilters_(url, type, filters) {
       }
     }
   }
-  return (
-    (!hasUrlFilters || allowUrls) && (!hasResourceTypeFilters || allowTypes)
-  );
+  return (!hasUrlFilters || allowUrls) && (!hasResourceTypeFilters || allowTypes);
 }
 
 function loadSelectedProfile_() {
@@ -57,13 +55,13 @@ function loadSelectedProfile_() {
       if (filter.urlPattern) {
         const urlPattern = filter.urlPattern;
         const joiner = [];
-        for (const i = 0; i < urlPattern.length; ++i) {
-          const c = urlPattern.charAt(i);
+        for (let i = 0; i < urlPattern.length; ++i) {
+          let c = urlPattern.charAt(i);
           if (SPECIAL_CHARS.indexOf(c) >= 0) {
             c = '\\' + c;
-          } else if (c == '\\') {
+          } else if (c === '\\') {
             c = '\\\\';
-          } else if (c == '*') {
+          } else if (c === '*') {
             c = '.*';
           }
           joiner.push(c);
@@ -117,6 +115,9 @@ function modifyHeader(source, dest) {
 
 function onBeforeRequestHandler_(details) {
   if (
+    details.url.includes('//webdriver.modheader.com/add') ||
+    details.url.includes('//webdriver.modheader.com/clear') ||
+    details.url.includes('//webdriver.modheader.com/load') ||
     details.url.includes('//webdriver.bewisse.com/add') ||
     details.url.includes('//webdriver.bewisse.com/clear') ||
     details.url.includes('//webdriver.bewisse.com/load') ||
@@ -137,44 +138,32 @@ function onBeforeRequestHandler_(details) {
 
 function modifyRequestHeaderHandler_(details) {
   currentProfile = loadSelectedProfile_();
-  if (
-    currentProfile &&
-    passFilters_(details.url, details.type, currentProfile.filters)
-  ) {
+  if (currentProfile && passFilters_(details.url, details.type, currentProfile.filters)) {
     modifyHeader(currentProfile.headers, details.requestHeaders);
   }
   return { requestHeaders: details.requestHeaders };
 }
 
 function modifyResponseHeaderHandler_(details) {
-  if (
-    currentProfile &&
-    passFilters_(details.url, details.type, currentProfile.filters)
-  ) {
+  if (currentProfile && passFilters_(details.url, details.type, currentProfile.filters)) {
     const responseHeaders = JSON.parse(JSON.stringify(details.responseHeaders));
     modifyHeader(currentProfile.respHeaders, responseHeaders);
-    if (
-      JSON.stringify(responseHeaders) != JSON.stringify(details.responseHeaders)
-    ) {
+    if (JSON.stringify(responseHeaders) !== JSON.stringify(details.responseHeaders)) {
       return { responseHeaders: responseHeaders };
     }
   }
 }
 
-chrome.webRequest.onBeforeRequest.addListener(
-  onBeforeRequestHandler_,
-  { urls: ['<all_urls>'] },
-  ['blocking']
-);
+chrome.webRequest.onBeforeRequest.addListener(onBeforeRequestHandler_, { urls: ['<all_urls>'] }, [
+  'blocking'
+]);
 
 function getChromeVersion() {
-  let pieces = navigator.userAgent.match(
-    /Chrom(?:e|ium)\/([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)/
-  );
-  if (pieces == null || pieces.length != 5) {
+  let pieces = navigator.userAgent.match(/Chrom(?:e|ium)\/([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)/);
+  if (pieces == null || pieces.length !== 5) {
     return undefined;
   }
-  pieces = pieces.map(piece => parseInt(piece, 10));
+  pieces = pieces.map((piece) => parseInt(piece, 10));
   return {
     major: pieces[1],
     minor: pieces[2],

@@ -1,0 +1,19 @@
+const { getExtension, getAddHeaderUrl } = require('chrome-modheader');
+const chrome = require('selenium-webdriver/chrome');
+const { Builder, until, By } = require('selenium-webdriver');
+require('chromedriver');
+
+(async function () {
+  const options = new chrome.Options().addExtensions(getExtension());
+  const driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
+  try {
+    await driver.get(getAddHeaderUrl('Test', 'ModHeader Test'));
+    await driver.get('https://modheader.com/headers/');
+    await driver.wait(
+      until.elementTextContains(driver.findElement(By.tagName('body')), 'ModHeader Test'),
+      1000
+    );
+  } finally {
+    await driver.quit();
+  }
+})();
