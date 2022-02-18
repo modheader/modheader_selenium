@@ -3,8 +3,8 @@
   "version": "1.0.6",
   "description": "Packaged ModHeader extension for Chrome WebDriver.",
   "main": "index.js",
-  "author": "support@bewisse.com",
-  "homepage": "https://bewisse.com/modheader/",
+  "author": "support@modheader.com",
+  "homepage": "https://modheader.com/",
   "keywords": [
     "modheader",
     "chrome",
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/bewisse/modheader_selenium.git"
+    "url": "https://github.com/modheader/modheader_selenium.git"
   },
   "license": "ISC"
 }

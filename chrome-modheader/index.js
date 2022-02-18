@@ -1,12 +1,5 @@
-const fs = require('fs');
-
-function encode(file) {
-  const stream = fs.readFileSync(file);
-  return Buffer.from(stream).toString('base64');
-}
-
 function getExtension() {
-  return encode(`${__dirname}/modheader.crx`);
+  return `${__dirname}/modheader.crx`;
 }
 
 function getAddHeaderUrl(name, value) {
