@@ -43,5 +43,6 @@ function getClearHeadersUrl() {
 module.exports = {
   getAddHeaderUrl,
   getClearHeadersUrl,
+  getAddHeadersUrl,
   getExtension
 };
