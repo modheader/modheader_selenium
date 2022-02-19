@@ -71,4 +71,11 @@ https://webdriver.modheader.com/load?profile={exported_profile_in_json}
 ```
 
 exported_profile_in_json can be obtained from the regular ModHeader
-extension using ... -> Export Profile.
+extension using ... -> Export Profile. Note that ModHeader exports
+an array of profiles by default, but this API will only accept a single
+profile, so you will need to extract the profile you want from the array
+and pass it in.
+
+```
+getLoadProfileUrl(exported_profile)
+```
