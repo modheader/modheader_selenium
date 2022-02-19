@@ -27,6 +27,10 @@ await driver.get(getAddHeaderUrl('HeaderName', 'HeaderValue'));
 All APIs are URL-based. Please make sure to URL encode your name and value
 properly.
 
+Note that the `webdriver.modheader.com` URLs only work when the extensions are
+properly loaded. Older versions of the extensions use `webdriver.bewisse.com`
+and `bewisse.com`. These will continue to work in the newer version.
+
 You can use the `getAddHeaderUrl()` and `getClearHeadersUrl()` functions to
 craft these URLs. Be sure to do `driver.get()`, and be mindful that these
 will change the URL of the WebDriver.
@@ -39,10 +43,25 @@ https://webdriver.modheader.com/add?{name1}={value1}&{name2}={value2}&...
 
 e.g., `https://webdriver.modheader.com/add?Test=1`
 
+Node API equivalent:
+
+```
+getAddHeaderUrl(name, value)
+getAddHeadersUrl({ name: value })
+```
+
+Construct the URL above using `getAddHeaderUrl('Test', '1')` or `getAddHeadersUrl({ Test: '1' })`
+
 ### Clear all modified request headers:
 
 ```
 https://webdriver.modheader.com/clear
+```
+
+Node API equivalent:
+
+```
+getClearHeadersUrl()
 ```
 
 ### Load custom profile:

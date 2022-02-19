@@ -1,6 +1,6 @@
 # ModHeader for Firefox Selenium (WebDriver)
 
-This is the simplified, packaged extension for using [ModHeader](https://bewisse.com/modheader/) in [Selenium WebDriver](https://www.seleniumhq.org/). For the Chrome version, look for [chrome-modheader](https://www.npmjs.com/package/chrome-modheader) instead.
+This is the simplified, packaged extension for using [ModHeader](https://modheader.com/) in [Selenium WebDriver](https://www.seleniumhq.org/). For the Chrome version, look for [chrome-modheader](https://www.npmjs.com/package/chrome-modheader) instead.
 
 ## Installation:
 
@@ -27,28 +27,47 @@ await driver.get(getAddHeaderUrl('HeaderName', 'HeaderValue'));
 All APIs are URL-based. Please make sure to URL encode your name and value
 properly.
 
-You can use the `getAddHeaderUrl()` and `getClearHeadersUrl()` functions to
-craft these URLs. Be sure to do `driver.get()`, and be mindful that these
+Note that the `webdriver.modheader.com` URLs only work when the extensions are
+properly loaded. Older versions of the extensions use `webdriver.bewisse.com`
+and `bewisse.com`. These will continue to work in the newer version.
+
+You can also use the `getAddHeaderUrl()`, `getAddHeadersUrl()` and `getClearHeadersUrl()`
+functions to craft these URLs. Be sure to do `driver.get()`, and be mindful that these
 will change the URL of the WebDriver.
 
 ### Add request header:
 
 ```
-https://webdriver.bewisse.com/add?{name1}={value1}&{name2}={value2}&...
+https://webdriver.modheader.com/add?{name1}={value1}&{name2}={value2}&...
 ```
 
-e.g., `https://webdriver.bewisse.com/add?Test=1`
+e.g., `https://webdriver.modheader.com/add?Test=1`
+
+Node API equivalent:
+
+```
+getAddHeaderUrl(name, value)
+getAddHeadersUrl({ name: value })
+```
+
+Construct the URL above using `getAddHeaderUrl('Test', '1')` or `getAddHeadersUrl({ Test: '1' })`
 
 ### Clear all modified request headers:
 
 ```
-https://webdriver.bewisse.com/clear
+https://webdriver.modheader.com/clear
+```
+
+Node API equivalent:
+
+```
+getClearHeadersUrl()
 ```
 
 ### Load custom profile:
 
 ```
-https://webdriver.bewisse.com/load?profile={exported_profile_in_json}
+https://webdriver.modheader.com/load?profile={exported_profile_in_json}
 ```
 
 exported_profile_in_json can be obtained from the regular ModHeader
