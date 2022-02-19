@@ -40,9 +40,22 @@ function getClearHeadersUrl() {
   return 'https://webdriver.modheader.com/clear';
 }
 
+/**
+ * Gets the URL to load the profile.
+ * @param profile {object | string} A JSON object or JSON encoded string representing the profile to be loaded.
+ *    The profile should be a single profile in the format exported by the ModHeader extension.
+ * @returns {string}
+ */
+function getLoadProfileUrl(profile) {
+  const url = new URL('https://webdriver.modheader.com/load');
+  url.searchParams.set('profile', typeof profile == 'string' ? profile : JSON.stringify(profile));
+  return url.href;
+}
+
 module.exports = {
   getAddHeaderUrl,
   getClearHeadersUrl,
   getAddHeadersUrl,
+  getLoadProfileUrl,
   getExtension
 };
