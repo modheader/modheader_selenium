@@ -6,7 +6,7 @@ This is the repo for using [ModHeader](https://chrome.google.com/webstore/detail
 
 If you find ModHeader useful, please consider making a donation. If you use it for your company project, please ask your company to make a monthly donation!
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/pools/c/84aPpFIA0Z)
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://paypal.me/hao1300)
 
 ## Installation:
 
@@ -24,9 +24,9 @@ npm install firefox-modheader
 
 For other programming languages, you can download the prepackaged extensions below and load them into WebDriver as needed.
 
-[Download for Chrome](./chrome-modheader/modheader.crx)
+[Download for Chrome](https://github.com/modheader/modheader_selenium/raw/main/chrome-modheader/modheader.crx)
 
-[Download for Firefox](./firefox-modheader/modheader.xpi)
+[Download for Firefox](https://github.com/modheader/modheader_selenium/raw/main/firefox-modheader/modheader.xpi)
 
 ## Usage:
 
