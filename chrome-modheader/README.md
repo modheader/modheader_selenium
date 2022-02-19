@@ -1,6 +1,6 @@
 # ModHeader for Chrome Selenium (WebDriver)
 
-This is the simplified, packaged extension for using [ModHeader](https://bewisse.com/modheader/) in [Selenium WebDriver](https://www.seleniumhq.org/). For the Firefox version, look for [firefox-modheader](https://www.npmjs.com/package/firefox-modheader) instead.
+This is the simplified, packaged extension for using [ModHeader](https://modheader.com/) in [Selenium WebDriver](https://www.seleniumhq.org/). For the Firefox version, look for [firefox-modheader](https://www.npmjs.com/package/firefox-modheader) instead.
 
 ## Installation:
 
@@ -34,21 +34,21 @@ will change the URL of the WebDriver.
 ### Add request header:
 
 ```
-https://webdriver.bewisse.com/add?{name1}={value1}&{name2}={value2}&...
+https://webdriver.modheader.com/add?{name1}={value1}&{name2}={value2}&...
 ```
 
-e.g., `https://webdriver.bewisse.com/add?Test=1`
+e.g., `https://webdriver.modheader.com/add?Test=1`
 
 ### Clear all modified request headers:
 
 ```
-https://webdriver.bewisse.com/clear
+https://webdriver.modheader.com/clear
 ```
 
 ### Load custom profile:
 
 ```
-https://bewisse.com/load?profile={exported_profile_in_json}
+https://webdriver.modheader.com/load?profile={exported_profile_in_json}
 ```
 
 exported_profile_in_json can be obtained from the regular ModHeader

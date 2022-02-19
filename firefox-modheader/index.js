@@ -13,7 +13,7 @@ function getExtension() {
  * @returns {string}
  */
 function getAddHeaderUrl(name, value) {
-  const url = new URL('https://webdriver.bewisse.com/add');
+  const url = new URL('https://webdriver.modheader.com/add');
   url.searchParams.set(name, value);
   return url.href;
 }
@@ -25,7 +25,7 @@ function getAddHeaderUrl(name, value) {
  * @returns {string}
  */
 function getAddHeadersUrl(nameValueMap) {
-  const url = new URL('https://webdriver.bewisse.com/add');
+  const url = new URL('https://webdriver.modheader.com/add');
   for (const [name, value] of Object.entries(nameValueMap)) {
     url.searchParams.set(name, value);
   }
@@ -37,7 +37,7 @@ function getAddHeadersUrl(nameValueMap) {
  * @returns {string}
  */
 function getClearHeadersUrl() {
-  return 'https://webdriver.bewisse.com/clear';
+  return 'https://webdriver.modheader.com/clear';
 }
 
 module.exports = {

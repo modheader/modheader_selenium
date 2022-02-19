@@ -1,6 +1,6 @@
 # ModHeader for Selenium (WebDriver)
 
-This is the repo for using [ModHeader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj) in [Selenium](https://www.seleniumhq.org/). For ModHeader's browser extension source code, please visit https://github.com/bewisse/modheader
+This is the repo for using [ModHeader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj) in [Selenium](https://www.seleniumhq.org/). For ModHeader's browser extension source code, please visit https://github.com/modheader/modheader
 
 ## Donation
 
@@ -22,8 +22,11 @@ To use this in NodeJS for Firefox, install the [firefox-modheader](https://www.n
 npm install firefox-modheader
 ```
 
-For other programming languages, you can find the prepackaged extensions in the `chrome-modheader` and `firefox-modheader`
-subdirectories. Load them into WebDriver as needed.
+For other programming languages, you can download the prepackaged extensions below and load them into WebDriver as needed.
+
+[Download for Chrome](./chrome-modheader/modheader.crx)
+
+[Download for Firefox](./firefox-modheader/modheader.xpi)
 
 ## Usage:
 
@@ -82,9 +85,15 @@ exports.config = {
 All APIs are URL-based. Please make sure to URL encode your name and value
 properly.
 
-If you are using npm, you can also use the `getAddHeaderUrl()` and `getClearHeadersUrl()`
-functions to craft these URLs. Be sure to do `driver.get()`, and be mindful that these
-will change the URL of the WebDriver.
+Note that these URLs only work when the extensions are properly loaded. You will
+notice that the domain `webdriver.modheader.com` do not map to a real server.
+This ensures that we will never log your requests, even if the extensions did not
+work. Older versions of the extensions use `webdriver.bewisse.com` and `bewisse.com`.
+These will continue to work in the newer version.
+
+If you are using npm, you can also use the `getAddHeaderUrl()`, `getAddHeadersUrl()`
+and `getClearHeadersUrl()` functions to craft these URLs. Be sure to do `driver.get()`,
+and be mindful that these will change the URL of the WebDriver.
 
 ### Add request header:
 
