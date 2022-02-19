@@ -1,6 +1,6 @@
 {
   "name": "chrome-modheader",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Packaged ModHeader extension for Chrome WebDriver.",
   "main": "index.js",
   "author": "support@modheader.com",
