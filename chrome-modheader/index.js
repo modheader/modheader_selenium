@@ -1,9 +1,25 @@
+const fs = require('fs');
+
+function encode(file) {
+  const stream = fs.readFileSync(file);
+  return Buffer.from(stream).toString('base64');
+}
+
 /**
  * Gets the path to the extension.
  * @returns {string}
  */
 function getExtension() {
   return `${__dirname}/modheader.crx`;
+}
+
+/**
+ * Gets the base64 encoding of the extension.
+ * This is used for webdriver IO or other frameworks that required base64 encoding instead of the file path.
+ * @returns {string}
+ */
+function getEncodedExtension() {
+  return encode(`${__dirname}/modheader.crx`);
 }
 
 /**
@@ -54,6 +70,7 @@ function getLoadProfileUrl(profile) {
 
 module.exports = {
   getAddHeaderUrl,
+  getEncodedExtension,
   getClearHeadersUrl,
   getAddHeadersUrl,
   getLoadProfileUrl,

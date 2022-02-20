@@ -30,7 +30,9 @@ For other programming languages, you can download the prepackaged extensions bel
 
 ## Usage:
 
-For Chrome:
+Take a look at the [examples](./examples) directory for more detailed examples
+
+For Selenium Webdriver with Chrome:
 
 ```
 const { getExtension, getAddHeaderUrl } = require('chrome-modheader');
@@ -42,7 +44,7 @@ const driver = await new Builder()
 await driver.get(getAddHeaderUrl('HeaderName', 'HeaderValue'));
 ```
 
-For Firefox:
+For Selenium Webdriver with Firefox:
 
 ```
 const { getExtension, getAddHeaderUrl } = require('firefox-modheader');
@@ -62,15 +64,30 @@ Modify wdio.conf.js file
 
 ```
 const chromeModheader = require('chrome-modheader');
+const firefoxModheader = require('firefox-modheader');
 
 exports.config = {
 ...
-    capabilities: [{
-        browserName: 'chrome',
-        'goog:chromeOptions': {
-            extensions: [chromeModheader.getExtension()],
+      capabilities: [
+        {
+          browserName: 'chrome',
+          'goog:chromeOptions': {
+            extensions: [chromeModheader.getEncodedExtension()]
+          }
+        },
+        {
+          browserName: 'firefox'
         }
-    }],
+      ],
+      services: [
+        ['selenium-standalone', { logPath: 'logs', installArgs: { drivers }, args: { drivers } }],
+        [
+          'firefox-profile',
+          {
+            extensions: [firefoxModheader.getExtension()]
+          }
+        ]
+      ],
 ...
     before: function (capabilities, specs) {
         browser.url(chromeModheader.getAddHeaderUrl('accept-encoding', ''));

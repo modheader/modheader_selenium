@@ -4,18 +4,25 @@
   "description": "Example for running ModHeader with selenium.",
   "scripts": {
     "verify-chrome": "node examples/selenium-webdriver/verify-chrome.js",
-    "verify-firefox": "node examples/selenium-webdriver/verify-firefox.js"
+    "verify-firefox": "node examples/selenium-webdriver/verify-firefox.js",
+    "wdio": "wdio run examples/webdriverio/wdio.conf.js"
   },
   "homepage": "https://modheader.com/",
   "author": "support@modheader.com",
   "license": "ISC",
   "private": true,
   "devDependencies": {
-    "chrome-modheader": "./chrome-modheader",
-    "firefox-modheader": "./firefox-modheader",
+    "@wdio/cli": "^7.16.15",
+    "@wdio/firefox-profile-service": "^7.16.14",
+    "@wdio/local-runner": "^7.16.15",
+    "@wdio/mocha-framework": "^7.16.15",
+    "@wdio/selenium-standalone-service": "^7.16.14",
+    "@wdio/spec-reporter": "^7.16.14",
     "bluebird": "^3.7.2",
+    "chrome-modheader": "./chrome-modheader",
     "chromedriver": "^98.0.1",
     "delay": "^5.0.0",
+    "firefox-modheader": "./firefox-modheader",
     "geckodriver": "^3.0.1",
     "lodash": "^4.17.21",
     "selenium-webdriver": "^4.1.1",
