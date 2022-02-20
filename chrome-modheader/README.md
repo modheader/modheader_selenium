@@ -35,6 +35,26 @@ You can use the `getAddHeaderUrl()` and `getClearHeadersUrl()` functions to
 craft these URLs. Be sure to do `driver.get()`, and be mindful that these
 will change the URL of the WebDriver.
 
+### Get extension file:
+
+Get the extension file:
+
+```
+getExtension()
+```
+
+Get the base64 encoded extension file (this is needed for legacy ChromeDriver / WebDriver IO):
+
+```
+getEncodedExtension()
+```
+
+API Breaking change: Older versions of chrome-modheader used to return base64 encoding of
+the extension file in `getExtension()`. This is no longer working by default with a newer
+version of ChromeDriver. If you are upgrading chrome-modheader, we strongly recommend you
+to upgrade to a newer version of ChromeDriver too. If you still need the base64 encoded
+extension, please use the `getEncodedExtension()` function instead.
+
 ### Add request header:
 
 ```
