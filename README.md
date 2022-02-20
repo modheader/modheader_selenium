@@ -32,7 +32,7 @@ For other programming languages, you can download the prepackaged extensions bel
 
 Take a look at the [examples](./examples) directory for more detailed examples
 
-For Selenium Webdriver with Chrome:
+#### Selenium Webdriver with Chrome:
 
 ```
 const { getExtension, getAddHeaderUrl } = require('chrome-modheader');
@@ -44,7 +44,7 @@ const driver = await new Builder()
 await driver.get(getAddHeaderUrl('HeaderName', 'HeaderValue'));
 ```
 
-For Selenium Webdriver with Firefox:
+#### Selenium Webdriver with Firefox:
 
 ```
 const { getExtension, getAddHeaderUrl } = require('firefox-modheader');
@@ -58,7 +58,7 @@ const driver = await new Builder()
 await driver.get(getAddHeaderUrl('HeaderName', 'HeaderValue'));
 ```
 
-For Webdriver.io:
+#### Webdriver.io:
 
 Modify wdio.conf.js file
 
@@ -110,7 +110,7 @@ If you are using npm, you can also use the `getAddHeaderUrl()`, `getAddHeadersUr
 and `getClearHeadersUrl()` functions to craft these URLs. Be sure to do `driver.get()`,
 and be mindful that these will change the URL of the WebDriver.
 
-### Add request header:
+#### Add request header:
 
 ```
 https://webdriver.modheader.com/add?{name1}={value1}&{name2}={value2}&...
@@ -127,7 +127,7 @@ getAddHeadersUrl({ name: value })
 
 Construct the URL above using `getAddHeaderUrl('Test', '1')` or `getAddHeadersUrl({ Test: '1' })`
 
-### Clear all modified request headers:
+#### Clear all modified request headers:
 
 ```
 https://webdriver.modheader.com/clear
@@ -139,7 +139,7 @@ Node API equivalent:
 getClearHeadersUrl()
 ```
 
-### Load custom profile:
+#### Load custom profile:
 
 ```
 https://webdriver.modheader.com/load?profile={exported_profile_in_json}
@@ -150,7 +150,7 @@ extension using ... -> Export Profile.
 
 ## Updating codes
 
-### Packaging the extensions
+#### Packaging the extensions
 
 For Chrome (update the modheader.crx file):
 Go to chrome://extensions, and click on "Pack extension".
@@ -162,12 +162,12 @@ npm install --global web-ext
 web-ext sign --api-key=$AMO_JWT_ISSUER --api-secret=$AMO_JWT_SECRET
 ```
 
-### Verification
+#### Verification
 
 Copy `modheader.crx` into chrome-modheader, and copy `modheader.xpi` into firefox-modheader.
 Run `npm run verify-chrome` and `npm run verify-firefox` to verify that the packaged extensions are working fine.
 
-### Publishing
+#### Publishing
 
 `cd chrome-modheader`, update the version in `package.json`, then `npm publish`
 `cd firefox-modheader`, update the version in `package.json`, then `npm publish`
