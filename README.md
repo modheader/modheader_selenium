@@ -112,6 +112,25 @@ FirefoxDriver driver = new FirefoxDriver(options);
 driver.get("https://webdriver.modheader.com/add?test=ModHeader%20Test");
 ```
 
+#### Python Selenium
+
+For Chrome
+
+```python
+options = webdriver.ChromeOptions()
+options.add_extension('chrome-modheader/modheader.crx')
+driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
+driver.get("https://webdriver.modheader.com/add?test=ModHeader%20Test")
+```
+
+For Firefox
+
+```python
+driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
+driver.install_addon('firefox-modheader/modheader.xpi')
+driver.get("https://webdriver.modheader.com/add?test=ModHeader%20Test")
+```
+
 ## API:
 
 All APIs are URL-based. Please make sure to URL encode your name and value
