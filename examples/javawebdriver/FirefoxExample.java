@@ -27,7 +27,7 @@ public class FirefoxExample {
 			FirefoxOptions options = new FirefoxOptions();
 			options.setProfile(profile);
 			driver = new FirefoxDriver(options);
-			driver.get("https://webdriver.bewisse.com/add?test=ModHeader%20Test");
+			driver.get("https://webdriver.modheader.com/add?test=ModHeader%20Test");
 
 			driver.get("https://modheader.com/headers");
 			new WebDriverWait(driver, Duration.ofSeconds(1))

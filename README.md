@@ -97,7 +97,7 @@ Path currentRelativePath = Paths.get("chrome-modheader/modheader.crx");
 ChromeOptions options = new ChromeOptions();
 options.addExtensions(new File(currentRelativePath.toAbsolutePath().toString()));
 ChromeDriver driver = new ChromeDriver(options);
-driver.get("https://webdriver.bewisse.com/add?test=ModHeader%20Test");
+driver.get("https://webdriver.modheader.com/add?test=ModHeader%20Test");
 ```
 
 For Firefox
@@ -109,7 +109,7 @@ profile.addExtension(new File(currentRelativePath.toAbsolutePath().toString()));
 FirefoxOptions options = new FirefoxOptions();
 options.setProfile(profile);
 FirefoxDriver driver = new FirefoxDriver(options);
-driver.get("https://webdriver.bewisse.com/add?test=ModHeader%20Test");
+driver.get("https://webdriver.modheader.com/add?test=ModHeader%20Test");
 ```
 
 ## API:

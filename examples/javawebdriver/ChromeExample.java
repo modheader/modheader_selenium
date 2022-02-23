@@ -24,7 +24,7 @@ public class ChromeExample {
 			ChromeOptions options = new ChromeOptions();
 			options.addExtensions(new File(currentRelativePath.toAbsolutePath().toString()));
 			driver = new ChromeDriver(options);
-			driver.get("https://webdriver.bewisse.com/add?test=ModHeader%20Test");
+			driver.get("https://webdriver.modheader.com/add?test=ModHeader%20Test");
 
 			driver.get("https://modheader.com/headers");
 			new WebDriverWait(driver, Duration.ofSeconds(1))
