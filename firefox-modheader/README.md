@@ -4,13 +4,13 @@ This is the simplified, packaged extension for using [ModHeader](https://modhead
 
 ## Installation:
 
-```
+```bash
 npm install firefox-modheader
 ```
 
 ## Usage
 
-```
+```javascript
 const { getExtension, getAddHeaderUrl } = require('firefox-modheader');
 
 const options = new firefox.Options();
@@ -35,6 +35,14 @@ You can also use the `getAddHeaderUrl()`, `getAddHeadersUrl()` and `getClearHead
 functions to craft these URLs. Be sure to do `driver.get()`, and be mindful that these
 will change the URL of the WebDriver.
 
+### Get extension file:
+
+Get the extension file:
+
+```javascript
+function getExtension() {}
+```
+
 ### Add request header:
 
 ```
@@ -45,9 +53,9 @@ e.g., `https://webdriver.modheader.com/add?Test=1`
 
 Node API equivalent:
 
-```
-getAddHeaderUrl(name, value)
-getAddHeadersUrl({ name: value })
+```javascript
+function getAddHeaderUrl(name, value) {}
+function getAddHeadersUrl({ name: value }) {}
 ```
 
 Construct the URL above using `getAddHeaderUrl('Test', '1')` or `getAddHeadersUrl({ Test: '1' })`
@@ -60,8 +68,8 @@ https://webdriver.modheader.com/clear
 
 Node API equivalent:
 
-```
-getClearHeadersUrl()
+```javascript
+function getClearHeadersUrl() {}
 ```
 
 ### Load custom profile:
@@ -76,6 +84,9 @@ an array of profiles by default, but this API will only accept a single
 profile, so you will need to extract the profile you want from the array
 and pass it in.
 
+Node API equivalent:
+
+```javascript
+function getLoadProfileUrl(exported_profile) {}
 ```
-getLoadProfileUrl(exported_profile)
-```
+

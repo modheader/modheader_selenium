@@ -12,13 +12,13 @@ If you find ModHeader useful, please consider making a donation. If you use it f
 
 To use this in NodeJS for Chrome, install the [chrome-modheader](https://www.npmjs.com/package/chrome-modheader) package:
 
-```
+```bash
 npm install chrome-modheader
 ```
 
 To use this in NodeJS for Firefox, install the [firefox-modheader](https://www.npmjs.com/package/firefox-modheader) package:
 
-```
+```bash
 npm install firefox-modheader
 ```
 
@@ -34,27 +34,21 @@ Take a look at the [examples](./examples) directory for more detailed examples
 
 #### Selenium Webdriver with Chrome:
 
-```
+```javascript
 const { getExtension, getAddHeaderUrl } = require('chrome-modheader');
 const options = new chrome.Options().addExtensions(getExtension());
-const driver = await new Builder()
-  .forBrowser('chrome')
-  .setChromeOptions(options)
-  .build();
+const driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
 await driver.get(getAddHeaderUrl('HeaderName', 'HeaderValue'));
 ```
 
 #### Selenium Webdriver with Firefox:
 
-```
+```javascript
 const { getExtension, getAddHeaderUrl } = require('firefox-modheader');
 
 const options = new firefox.Options();
 options.addExtensions(getExtension());
-const driver = await new Builder()
-  .forBrowser('firefox')
-  .setFirefoxOptions(options)
-  .build();
+const driver = await new Builder().forBrowser('firefox').setFirefoxOptions(options).build();
 await driver.get(getAddHeaderUrl('HeaderName', 'HeaderValue'));
 ```
 
@@ -62,39 +56,60 @@ await driver.get(getAddHeaderUrl('HeaderName', 'HeaderValue'));
 
 Modify wdio.conf.js file
 
-```
+```javascript
 const chromeModheader = require('chrome-modheader');
 const firefoxModheader = require('firefox-modheader');
 
 exports.config = {
-...
-      capabilities: [
-        {
-          browserName: 'chrome',
-          'goog:chromeOptions': {
-            extensions: [chromeModheader.getEncodedExtension()]
-          }
-        },
-        {
-          browserName: 'firefox'
-        }
-      ],
-      services: [
-        ['selenium-standalone', { logPath: 'logs', installArgs: { drivers }, args: { drivers } }],
-        [
-          'firefox-profile',
-          {
-            extensions: [firefoxModheader.getExtension()]
-          }
-        ]
-      ],
-...
-    before: function (capabilities, specs) {
-        browser.url(chromeModheader.getAddHeaderUrl('accept-encoding', ''));
+  capabilities: [
+    {
+      browserName: 'chrome',
+      'goog:chromeOptions': {
+        extensions: [chromeModheader.getEncodedExtension()]
+      }
     },
-...
-}
+    {
+      browserName: 'firefox'
+    }
+  ],
+  services: [
+    ['selenium-standalone', { logPath: 'logs', installArgs: { drivers }, args: { drivers } }],
+    [
+      'firefox-profile',
+      {
+        extensions: [firefoxModheader.getExtension()]
+      }
+    ]
+  ],
 
+  before: function (capabilities, specs) {
+    browser.url(chromeModheader.getAddHeaderUrl('accept-encoding', ''));
+  }
+};
+```
+
+#### Java Selenium
+
+For Chrome
+
+```java
+Path currentRelativePath = Paths.get("chrome-modheader/modheader.crx");
+ChromeOptions options = new ChromeOptions();
+options.addExtensions(new File(currentRelativePath.toAbsolutePath().toString()));
+ChromeDriver driver = new ChromeDriver(options);
+driver.get("https://webdriver.bewisse.com/add?test=ModHeader%20Test");
+```
+
+For Firefox
+
+```java
+Path currentRelativePath = Paths.get("firefox-modheader/modheader.xpi");
+FirefoxProfile profile = new FirefoxProfile();
+profile.addExtension(new File(currentRelativePath.toAbsolutePath().toString()));
+FirefoxOptions options = new FirefoxOptions();
+options.setProfile(profile);
+FirefoxDriver driver = new FirefoxDriver(options);
+driver.get("https://webdriver.bewisse.com/add?test=ModHeader%20Test");
 ```
 
 ## API:
@@ -120,9 +135,9 @@ e.g., `https://webdriver.modheader.com/add?Test=1`
 
 Node API equivalent:
 
-```
-getAddHeaderUrl(name, value)
-getAddHeadersUrl({ name: value })
+```javascript
+function getAddHeaderUrl(name, value) {}
+function getAddHeadersUrl({ name: value }) {}
 ```
 
 Construct the URL above using `getAddHeaderUrl('Test', '1')` or `getAddHeadersUrl({ Test: '1' })`
@@ -135,8 +150,8 @@ https://webdriver.modheader.com/clear
 
 Node API equivalent:
 
-```
-getClearHeadersUrl()
+```javascript
+function getClearHeadersUrl() {}
 ```
 
 #### Load custom profile:
@@ -146,7 +161,16 @@ https://webdriver.modheader.com/load?profile={exported_profile_in_json}
 ```
 
 exported_profile_in_json can be obtained from the regular ModHeader
-extension using ... -> Export Profile.
+extension using ... -> Export Profile. Note that ModHeader exports
+an array of profiles by default, but this API will only accept a single
+profile, so you will need to extract the profile you want from the array
+and pass it in.
+
+Node API equivalent:
+
+```javascript
+function getLoadProfileUrl(exported_profile) {}
+```
 
 ## Updating codes
 
@@ -157,7 +181,7 @@ Go to chrome://extensions, and click on "Pack extension".
 
 For Firefox (update the modheader.xpi file):
 
-```
+```bash
 npm install --global web-ext
 web-ext sign --api-key=$AMO_JWT_ISSUER --api-secret=$AMO_JWT_SECRET
 ```

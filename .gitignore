@@ -65,3 +65,7 @@ typings/
 
 .idea
 package-lock.json
+/bin/
+.classpath
+.project
+

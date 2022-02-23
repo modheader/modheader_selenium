@@ -4,13 +4,13 @@ This is the simplified, packaged extension for using [ModHeader](https://modhead
 
 ## Installation:
 
-```
+```bash
 npm install chrome-modheader
 ```
 
 ## Usage
 
-```
+```javascript
 const { getExtension, getAddHeaderUrl } = require('chrome-modheader');
 
 
@@ -39,14 +39,14 @@ will change the URL of the WebDriver.
 
 Get the extension file:
 
-```
-getExtension()
+```javascript
+function getExtension() {}
 ```
 
 Get the base64 encoded extension file (this is needed for legacy ChromeDriver / WebDriver IO):
 
-```
-getEncodedExtension()
+```javascript
+function getEncodedExtension() {}
 ```
 
 API Breaking change: Older versions of chrome-modheader used to return base64 encoding of
@@ -65,9 +65,9 @@ e.g., `https://webdriver.modheader.com/add?Test=1`
 
 Node API equivalent:
 
-```
-getAddHeaderUrl(name, value)
-getAddHeadersUrl({ name: value })
+```javascript
+function getAddHeaderUrl(name, value) {}
+function getAddHeadersUrl({ name: value }) {}
 ```
 
 Construct the URL above using `getAddHeaderUrl('Test', '1')` or `getAddHeadersUrl({ Test: '1' })`
@@ -80,11 +80,15 @@ https://webdriver.modheader.com/clear
 
 Node API equivalent:
 
-```
-getClearHeadersUrl()
+```javascript
+function getClearHeadersUrl() {}
 ```
 
 ### Load custom profile:
+
+```
+https://webdriver.modheader.com/load?profile={exported_profile_in_json}
+```
 
 exported_profile_in_json can be obtained from the regular ModHeader
 extension using ... -> Export Profile. Note that ModHeader exports
@@ -92,6 +96,8 @@ an array of profiles by default, but this API will only accept a single
 profile, so you will need to extract the profile you want from the array
 and pass it in.
 
-```
-getLoadProfileUrl(exported_profile)
+Node API equivalent:
+
+```javascript
+function getLoadProfileUrl(exported_profile) {}
 ```
