@@ -98,7 +98,7 @@ function modifyHeader(source, dest) {
     if (index !== undefined) {
       if (!currentProfile.appendMode) {
         dest[index].value = header.value;
-      } else if (currentProfile.appendMode == 'comma') {
+      } else if (currentProfile.appendMode === 'comma') {
         if (dest[index].value) {
           dest[index].value += ',';
         }
