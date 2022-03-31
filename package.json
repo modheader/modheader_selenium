@@ -20,12 +20,10 @@
     "@wdio/spec-reporter": "^7.16.14",
     "bluebird": "^3.7.2",
     "chrome-modheader": "./chrome-modheader",
-    "chromedriver": "^98.0.1",
-    "delay": "^5.0.0",
+    "chromedriver": "^100.0.0",
     "firefox-modheader": "./firefox-modheader",
     "geckodriver": "^3.0.1",
     "lodash": "^4.17.21",
-    "selenium-webdriver": "^4.1.1",
-    "sleep": "^6.3.0"
+    "selenium-webdriver": "^4.1.1"
   }
 }
