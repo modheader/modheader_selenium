@@ -20,7 +20,7 @@
     "@wdio/spec-reporter": "^7.16.14",
     "bluebird": "^3.7.2",
     "chrome-modheader": "./chrome-modheader",
-    "chromedriver": "^100.0.0",
+    "chromedriver": "^103.0.0",
     "firefox-modheader": "./firefox-modheader",
     "geckodriver": "^3.0.1",
     "lodash": "^4.17.21",

@@ -1,5 +1,6 @@
 const {
   getExtension,
+  getClearHeadersUrl,
   getAddHeaderUrl,
   getAddHeadersUrl,
   getLoadProfileUrl
