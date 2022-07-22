@@ -1,6 +1,6 @@
 {
   "name": "firefox-modheader",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Packaged ModHeader extension for Firefox WebDriver.",
   "main": "index.js",
   "author": "support@modheader.com",
