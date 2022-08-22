@@ -2,7 +2,7 @@ const chromeModheader = require('chrome-modheader');
 const firefoxModheader = require('firefox-modheader');
 
 const drivers = {
-  chrome: { version: '98.0.4758.102' },
+  chrome: { version: '103.0.5060.134' },
   firefox: { version: '0.30.0' }
 };
 exports.config = {
