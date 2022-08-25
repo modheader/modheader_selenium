@@ -1,6 +1,5 @@
 const {
   getExtension,
-  getClearHeadersUrl,
   getAddHeaderUrl,
   getAddHeadersUrl,
   getLoadProfileUrl
@@ -10,7 +9,9 @@ const { Builder, until, By } = require('selenium-webdriver');
 require('chromedriver');
 
 (async function () {
-  const options = new chrome.Options().addExtensions(getExtension());
+  const options = new chrome.Options()
+    .addArguments('headless=chrome')
+    .addExtensions(getExtension());
   const driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
     await driver.get(getAddHeaderUrl('Test', 'ModHeader Test'));
