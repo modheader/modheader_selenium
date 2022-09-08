@@ -58,7 +58,7 @@ function getClearHeadersUrl() {
 
 /**
  * Gets the URL to load the profile.
- * @param profile {object | string} A JSON object or JSON encoded string representing the profile to be loaded.
+ * @param profile {object | string} A JSON object/array or JSON encoded string representing the profile to be loaded.
  *    The profile should match the format exported by the ModHeader extension.
  * @returns {string}
  */
