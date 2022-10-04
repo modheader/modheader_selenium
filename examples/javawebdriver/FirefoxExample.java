@@ -18,7 +18,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class FirefoxExample {
 
 	public static void main(String[] args) {
-		WebDriverManager.firefoxdriver().driverVersion("0.30.0").setup();
+		WebDriverManager.firefoxdriver().setup();
 		WebDriver driver = null;
 		try {
 			Path currentRelativePath = Paths.get("firefox-modheader/modheader.xpi");
