@@ -19,7 +19,7 @@ public class FirefoxExample {
 		try {
 			Path currentRelativePath = Paths.get("firefox-modheader/modheader.xpi");
 			driver = new FirefoxDriver();
-			driver.installExtension(currentRelativePath.toAbsolutePath());
+			driver.installExtension(currentRelativePath);
 			Thread.sleep(2000);
 			driver.get("https://webdriver.modheader.com/add?test=ModHeader%20Test");
 
