@@ -9,9 +9,7 @@ const { Builder, until, By } = require('selenium-webdriver');
 require('chromedriver');
 
 (async function () {
-  const options = new chrome.Options()
-    .addArguments('headless=chrome')
-    .addExtensions(getExtension());
+  const options = new chrome.Options().addArguments('headless=new').addExtensions(getExtension());
   const driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
     await driver.get(getAddHeaderUrl('Test', 'ModHeader Test'));
@@ -69,6 +67,7 @@ require('chromedriver');
       until.elementTextContains(driver.findElement(By.tagName('body')), 'ModHeader Test 5'),
       1000
     );
+    console.log('Success');
   } finally {
     await driver.quit();
   }
