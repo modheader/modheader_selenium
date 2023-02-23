@@ -12,7 +12,7 @@ options = webdriver.ChromeOptions()
 options.add_extension(extension_path)
 driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
 driver.get("https://webdriver.modheader.com/add?test=ModHeader%20Test")
-WebDriverWait(driver, 1).until(EC.title_is("ModHeader Done"))
+WebDriverWait(driver, 5).until(EC.title_is("Done"))
 
 driver.get("https://modheader.com/headers")
 WebDriverWait(driver, 1).until(EC.text_to_be_present_in_element((By.TAG_NAME, "body"), "ModHeader Test"))
