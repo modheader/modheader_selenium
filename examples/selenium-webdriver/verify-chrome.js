@@ -13,6 +13,7 @@ require('chromedriver');
   const driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
   try {
     await driver.get(getAddHeaderUrl('Test', 'ModHeader Test'));
+    await driver.wait(until.titleIs('Done'), 5000);
     await driver.get('https://modheader.com/headers');
     await driver.wait(
       until.elementTextContains(driver.findElement(By.tagName('body')), 'ModHeader Test'),
