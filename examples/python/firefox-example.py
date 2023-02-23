@@ -11,6 +11,7 @@ extension_path = os.path.abspath(os.path.join(dirname, '../../firefox-modheader/
 driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
 driver.install_addon(extension_path)
 driver.get("https://webdriver.modheader.com/add?test=ModHeader%20Test")
+WebDriverWait(driver, 1).until(EC.title_is("ModHeader Done"))
 
 driver.get("https://modheader.com/headers")
 WebDriverWait(driver, 1).until(EC.text_to_be_present_in_element((By.TAG_NAME, "body"), "ModHeader Test"))
