@@ -18,5 +18,5 @@ const driver = await new Builder().forBrowser('chrome').setChromeOptions(options
 await driver.get(getAddHeaderUrl('HeaderName', 'HeaderValue'));
 ```
 
-Please visit [ModHeader webdriver documentation page](https://docs.modheader.com/advanced/selenium-webdriver) for
+Please visit [ModHeader webdriver documentation page](https://modheader.com/docs/advanced/selenium-webdriver) for
 more details on how to use ModHeader in Selenium WebDriver.
